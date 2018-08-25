@@ -11,5 +11,3 @@ before_script:
     - 'composer install --no-interaction --prefer-dist --optimize-autoloader'
     - 'php artisan key:generate'
     - 'php artisan migrate'
-script:
-    - bin/atoum --test-all
