@@ -8,14 +8,13 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option controls the default hash driver that will be used to hash
-    | passwords for your application. By default, the bcrypt algorithm is
-    | used; however, you remain free to modify this option if you wish.
+    | passwords for your application. Feel free to modify this option if you wish.
     |
-    | Supported: "bcrypt", "argon"
+    | Supported: "salt_md5", "base64md5"
     |
     */
 
-    'driver' => 'bcrypt',
+    'driver' => 'salt_md5',
 
     /*
     |--------------------------------------------------------------------------
