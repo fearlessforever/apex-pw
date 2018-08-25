@@ -26,8 +26,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropColumn('remember_token');
-        Schema::dropColumn('created_at');
-        Schema::dropColumn('updated_at');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+        });
     }
 }
