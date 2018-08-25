@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -22,6 +24,33 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * Perfect World's users columns.
+     *
+     * @var string
+     */
+    protected $columns = [
+        'ID'          => 'int',
+        'name'        => 'string',
+        'passwd'      => 'string',
+        'Prompt'      => 'string',
+        'answer'      => 'string',
+        'truename'    => 'string',
+        'idnumber'    => 'string',
+        'email'       => 'string',
+        'mobilenumber'=> 'string',
+        'province'    => 'string',
+        'city'        => 'string',
+        'phonenumber' => 'string',
+        'address'     => 'string',
+        'postalcode'  => 'string',
+        'gender'      => 'int',
+        'birthday'    => 'date',
+        'creatime'    => 'date',
+        'qq'          => 'string',
+        'passwd2'     => 'string',
+    ];
 
     /**
      * Where to redirect users after registration.
@@ -41,6 +70,22 @@ class RegisterController extends Controller
     }
 
     /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -49,9 +94,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|min:3|unique:users',
+            'email' => 'required|email|max:64|unique:users',
+            'passwd' => 'required|min:6',
         ]);
     }
 
@@ -63,10 +108,54 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $collection = collect($data)->except(['_token'])->toArray();
+        $data = $this->sortAndCleanData($collection);
+
+        // Unset 'ID' and 'creatime' (both are set by 'adduser' procedure)
+        unset($data['ID'], $data['creatime']);
+
+        // Set passwd's hash
+        $data['passwd'] = salt_md5($data['name'].$data['passwd']);
+
+        return DB::statement('CALL adduser (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
+    }
+
+    /**
+     * Sorts the data according to PW's users columns, removes non-existing columns,
+     * and sets not set columns as empty strings.
+     *
+     * @param array $data
+     * @return void
+     */
+    protected function sortAndCleanData(array $data)
+    {
+        $data_temp = $data;
+        $data = [];
+        foreach ($this->columns as $column => $type) {
+            if (isset($data_temp[$column])) {
+                $data[$column] = $data_temp[$column];
+            } else {
+                $data[$column] = $this->setColumnEmptyValueByType($type);
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * Correctly defines the "empty value" based on column type.
+     *
+     * @param $type The column type.
+     * @return void
+     */
+    protected function setColumnEmptyValueByType($type)
+    {
+        switch ($type) {
+            case 'string':
+                return '';
+            case 'int':
+                return 0;
+            case 'date':
+                return null;
+        }
     }
 }
