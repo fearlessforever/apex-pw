@@ -9,5 +9,5 @@ before_install:
 before_script:
     - 'cp .env.testing .env'
     - 'composer install --no-interaction --prefer-dist --optimize-autoloader'
-    - 'php artisan key:generate'
+    - 'php artisan key:generate && php artisan key:generate --env=testing'
     - 'php artisan migrate'
