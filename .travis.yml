@@ -1,0 +1,15 @@
+language: php
+php:
+    - 7.1
+cache:
+    - node_modules
+    - vendor
+before_install:
+    - mysql -e 'CREATE DATABASE cp_test;'
+before_script:
+    - 'cp .env.testing .env'
+    - 'composer install --no-interaction --prefer-dist --optimize-autoloader'
+    - 'php artisan run key:generate'
+    - 'php artisan migrate'
+script:
+    - bin/atoum --test-all
