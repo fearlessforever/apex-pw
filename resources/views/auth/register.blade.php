@@ -41,6 +41,15 @@
         @endif
     </div>
 
+    <div class="mb-6">
+            {!! NoCaptcha::display() !!}
+            @if ($errors->has('g-recaptcha-response'))
+            <p class="text-red text-xs italic pt-2" role="alert">
+                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+            </p>
+        @endif
+    </div>
+
     <div class="mb-8">
         <button type="submit" class="bg-black hover:bg-grey-darkest text-white font-bold h-12 py-2 px-4 rounded">
             {{ __('Register') }}

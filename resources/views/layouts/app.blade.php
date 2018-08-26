@@ -59,5 +59,6 @@
             </div>
         </div>
     </div>
+    {!! NoCaptcha::renderJs() !!}
 </body>
 </html>
