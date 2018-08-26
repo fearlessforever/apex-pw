@@ -10,10 +10,10 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-    * The primary key for the model.
-    *
-    * @var string
-    */
+     * The primary key for the model.
+     *
+     * @var string
+     */
     protected $primaryKey = 'ID';
 
     /**
@@ -35,10 +35,10 @@ class User extends Authenticatable
     ];
 
     /**
-    * Get the password for the user.
-    *
-    * @return string
-    */
+     * Get the password for the user.
+     *
+     * @return string
+     */
     public function getAuthPassword()
     {
         return $this->passwd;

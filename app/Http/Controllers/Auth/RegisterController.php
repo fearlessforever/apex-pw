@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use DB;
 
 class RegisterController extends Controller
 {
@@ -138,6 +138,7 @@ class RegisterController extends Controller
                 $data[$column] = $this->setColumnEmptyValueByType($type);
             }
         }
+
         return $data;
     }
 
@@ -155,7 +156,7 @@ class RegisterController extends Controller
             case 'int':
                 return 0;
             case 'date':
-                return null;
+                return;
         }
     }
 }

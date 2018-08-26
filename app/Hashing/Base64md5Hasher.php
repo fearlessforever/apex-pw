@@ -2,9 +2,7 @@
 
 namespace App\Hashing;
 
-use RuntimeException;
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
-use App\Hashing\AbstractHasher;
 
 class Base64md5Hasher extends AbstractHasher implements HasherContract
 {
@@ -35,16 +33,17 @@ class Base64md5Hasher extends AbstractHasher implements HasherContract
         if (strlen($hashedValue) === 0) {
             return false;
         }
+
         return $this->make($value) === $hashedValue;
     }
 
     /**
-    * Check if the given hash has been hashed using the given options.
-    *
-    * @param  string  $hashedValue
-    * @param  array   $options
-    * @return bool
-    */
+     * Check if the given hash has been hashed using the given options.
+     *
+     * @param  string  $hashedValue
+     * @param  array   $options
+     * @return bool
+     */
     public function needsRehash($hashedValue, array $options = [])
     {
         return false;

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 trait AuthenticatesUsers
@@ -23,13 +23,13 @@ trait AuthenticatesUsers
     }
 
     /**
-    * Handle a login request to the application.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-    *
-    * @throws \Illuminate\Validation\ValidationException
-    */
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -56,11 +56,11 @@ trait AuthenticatesUsers
     }
 
     /**
-    * Validate the user login request.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return void
-    */
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [
@@ -81,17 +81,17 @@ trait AuthenticatesUsers
         $username = strtolower($credentials['name']);
 
         $this->guard()->attempt(
-            ['name' => $username, 'password' => $username . $credentials['passwd']],
+            ['name' => $username, 'password' => $username.$credentials['passwd']],
             $request->filled('remember')
         );
     }
 
     /**
-    * Get the needed authorization credentials from the request.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return array
-    */
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
     protected function credentials(Request $request)
     {
         return $request->only('name', 'passwd');
@@ -151,11 +151,11 @@ trait AuthenticatesUsers
     }
 
     /**
-    * Log the user out of the application.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         $this->guard()->logout();
