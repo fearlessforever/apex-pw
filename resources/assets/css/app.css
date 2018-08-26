@@ -1,0 +1,10 @@
+@tailwind preflight;
+@tailwind components;
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Tailwind Utilities
+---------------------------------------------------------------------------- */
+@tailwind utilities;
