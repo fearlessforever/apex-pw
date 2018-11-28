@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'truename' => 'required|string|max:32'
+            'truename' => 'required|string|max:32',
         ];
     }
 }

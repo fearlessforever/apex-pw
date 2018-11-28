@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('hash_password')) {
+if (! function_exists('hash_password')) {
     /**
      * Hash the give password.
      */
@@ -17,7 +17,7 @@ if (!function_exists('hash_password')) {
     }
 }
 
-if (!function_exists('active_nav')) {
+if (! function_exists('active_nav')) {
     function active_nav(string $route) : string
     {
         if (is_null($route)) {

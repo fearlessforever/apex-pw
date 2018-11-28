@@ -25,7 +25,7 @@ class PasswordRequest extends FormRequest
     {
         return [
             'current_password' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ];
     }
 }

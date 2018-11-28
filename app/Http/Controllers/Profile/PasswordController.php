@@ -8,10 +8,10 @@ use App\Http\Requests\PasswordRequest;
 class PasswordController extends Controller
 {
     /**
-      * Display a listing of the resource.
-      *
-      * @return \Illuminate\Http\Response
-      */
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('profile.password');
@@ -28,8 +28,9 @@ class PasswordController extends Controller
         $user = auth()->user();
 
         // Check the current password
-        if (!hash_equals(hash_password($user->name.$request->current_password), $user->passwd)) {
+        if (! hash_equals(hash_password($user->name.$request->current_password), $user->passwd)) {
             flash('Your current password seems to be invalid.')->error();
+
             return redirect()->route('profile.settings');
         }
 
@@ -38,7 +39,7 @@ class PasswordController extends Controller
 
         // Update user's password
         tap($user)->update([
-            'passwd' => $hashPassword
+            'passwd' => $hashPassword,
         ]);
 
         flash('Your password was successfully updated.')->success();
