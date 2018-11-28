@@ -1,16 +1,19 @@
 <?php
 
-if (! function_exists('base64md5')) {
+if (!function_exists('hash_password')) {
     /**
-     * Hash the given value with base64md5.
-     *
-     * @param  string  $value
-     * @param  array  $options
-     * @return string
+     * Hash the give password
      */
-    function base64md5($value, $options = [])
+    function hash_password($value, $options = []) : string
     {
-        return app('hash')->driver('base64md5')->make($value, $options);
+        switch (config('hashing.driver')) {
+            case 'base64md5':
+                return app('hash')->driver('base64md5')->make($value, $options);
+            break;
+            case 'salt_md5':
+               return app('hash')->driver('saltmd5')->make($value, $options);
+            break;
+        }
     }
 }
 

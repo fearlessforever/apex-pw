@@ -116,7 +116,7 @@ class RegisterController extends Controller
         unset($data['ID'], $data['creatime']);
 
         // Set passwd's hash
-        $data['passwd'] = salt_md5($data['name'].$data['passwd']);
+        $data['passwd'] = hash_password($data['name'].$data['passwd']);
 
         return DB::statement('CALL adduser (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
     }
