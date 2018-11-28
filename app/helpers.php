@@ -1,8 +1,8 @@
 <?php
 
-if (!function_exists('hash_password')) {
+if (! function_exists('hash_password')) {
     /**
-     * Hash the give password
+     * Hash the give password.
      */
     function hash_password($value, $options = []) : string
     {
