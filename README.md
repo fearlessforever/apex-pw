@@ -22,5 +22,22 @@ Beautifully developed and maintained by an admin to **help you**. Forget cumbers
 - Ctype PHP Extension
 - JSON PHP Extension
 
+### Features
+
+It's a goal add many features as possible. If you want a specific feature, you can request by opening an issue.
+
+- Authentication
+    * Login
+    * Registration
+- Profile
+    * Update profile data
+    * Change password
+- Donate (__under development__)
+    * Cash Package 
+    * Supported payment gateways:
+        * **Brazil:** PagSeguro, PayPal and Mercado Pago
+        * **International:** PayPal
+
 ## Support
+
 <a href="https://www.buymeacoffee.com/itmxe7h" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
