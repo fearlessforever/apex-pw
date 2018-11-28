@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('hash_password')) {
+if (!function_exists('hash_password')) {
     /**
      * Hash the give password.
      */
@@ -17,16 +17,17 @@ if (! function_exists('hash_password')) {
     }
 }
 
-if (! function_exists('salt_md5')) {
-    /**
-     * Hash the given value with base64md5.
-     *
-     * @param  string  $value
-     * @param  array  $options
-     * @return string
-     */
-    function salt_md5($value, $options = [])
+if (!function_exists('active_nav')) {
+    function active_nav(string $route) : string
     {
-        return app('hash')->driver('saltmd5')->make($value, $options);
+        if (is_null($route)) {
+            return null;
+        }
+
+        if (\Route::currentRouteNamed($route)) {
+            return 'is-active';
+        }
+
+        return '';
     }
 }
