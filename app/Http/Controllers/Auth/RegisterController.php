@@ -117,6 +117,7 @@ class RegisterController extends Controller
 
         // Set passwd's hash
         $data['passwd'] = hash_password($data['name'].$data['passwd']);
+        $data['passwd'] = Hash::make($data['name'].$data['passwd']);
 
         return DB::statement('CALL adduser (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
     }
