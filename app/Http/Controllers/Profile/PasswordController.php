@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordRequest;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
@@ -35,7 +36,7 @@ class PasswordController extends Controller
         }
 
         // Hash the new password in pw-style
-        $hashPassword = hash_password($user->name.$request->password);
+        $hashPassword = Hash::make($user->name.$request->password);
 
         // Update user's password
         tap($user)->update([
