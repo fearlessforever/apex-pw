@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\PasswordRequest;
 
 class PasswordController extends Controller
 {
