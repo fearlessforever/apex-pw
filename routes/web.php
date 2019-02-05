@@ -25,4 +25,9 @@ Route::prefix('profile')->group(function ($route) {
     Route::post('settings', 'Profile\SettingsController@update')->name('profile.update');
     Route::get('password', 'Profile\PasswordController@index')->name('profile.password');
     Route::post('password', 'Profile\PasswordController@updatePassword')->name('password.update');
+    Route::prefix('donate')->group(function ($route) {
+        Route::get('/', 'Donate\RequestController@index')->name('donate.request');
+        Route::post('/', 'Donate\RequestController@store')->name('donate.store');
+        Route::get('history', 'Donate\DonateController@index')->name('donate.history');
+    });
 });
