@@ -10,6 +10,7 @@
         "cknow/laravel-money": "^3.2",
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
+        "laracasts/presenter": "^0.2.1",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0"
         "pagseguro/pagseguro-php-sdk": "6.0.*",
