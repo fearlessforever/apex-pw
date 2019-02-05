@@ -4,9 +4,7 @@ namespace App\Services\Payments;
 
 use Exception;
 use App\Donate;
-use Illuminate\Support\Facades\Log;
 use App\Exceptions\InvalidTransaction;
-use App\Exceptions\PagSeguroException;
 use Facades\App\Services\Payments\Process;
 
 class PagSeguro
