@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Donate;
 
 header('access-control-allow-origin: https://sandbox.pagseguro.uol.com.br');
 
+use App\PaymentGateway;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\PaymentGateway;
 use App\Exceptions\InvalidPaymentGateway;
 
 class NotificationsController extends Controller
 {
     /**
-     * This method is responsible to handle payment gateway notifications (IPN)
+     * This method is responsible to handle payment gateway notifications (IPN).
      */
     public function notification(Request $request)
     {

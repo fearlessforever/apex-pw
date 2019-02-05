@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Donate;
 
-use App\Http\Controllers\Controller;
+use App\Donate;
 use App\CashPackage;
 use App\PaymentGateway;
-use App\Donate;
-use App\Http\Requests\DonateRequest;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DonateRequest;
 use App\Contracts\Repositories\UserRepository;
 
 class RequestController extends Controller
@@ -18,8 +18,9 @@ class RequestController extends Controller
     {
         $this->user = $user;
     }
+
     /**
-     * Shows the donate request page
+     * Shows the donate request page.
      */
     public function index()
     {
@@ -30,14 +31,14 @@ class RequestController extends Controller
     }
 
     /**
-     * Store the newly created order
+     * Store the newly created order.
      */
     public function store(DonateRequest $request)
     {
         $order = $this->user->current()->orders()->create([
             'package_id' => $request->cash_package,
             'gateway_id' => $request->gateway,
-            'transaction_reference' => Str::uuid()
+            'transaction_reference' => Str::uuid(),
         ]);
 
         // Get payment gateway

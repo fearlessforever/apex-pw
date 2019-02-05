@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -35,7 +35,7 @@ class User extends Authenticatable
         'passwd', 'passwd2', 'remember_token',
     ];
 
-     /**
+    /**
      * The relations to eager load on every query.
      *
      * @var array
@@ -73,9 +73,9 @@ class User extends Authenticatable
     /**
      * Add cubi gold to the given user.
      *
-     * @param integer $user User ID
-     * @param integer $amount The amount of cash
-     * @param integer $zoneid Server zoneid/aid (Must match your gdeliveryd's gamesys.conf settings).
+     * @param int $user User ID
+     * @param int $amount The amount of cash
+     * @param int $zoneid Server zoneid/aid (Must match your gdeliveryd's gamesys.conf settings).
      * @return void
      */
     public static function addcash(int $user, int $amount, int $zoneid = 1)

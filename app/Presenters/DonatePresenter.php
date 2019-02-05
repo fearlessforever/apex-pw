@@ -11,23 +11,23 @@ class DonatePresenter extends Presenter
         $labels = [
             'initiated' => [
                 'label' => 'Pendente',
-                'color' => 'warning'
+                'color' => 'warning',
             ],
             1 => [
                 'label' => 'Aguardando pagamento',
-                'color' => 'warning'
+                'color' => 'warning',
             ],
             2 => [
                 'label' => 'Em análise',
-                'color' => 'warning'
+                'color' => 'warning',
             ],
             3 => [
                 'label' => 'Aprovado',
-                'color' => 'success'
+                'color' => 'success',
             ],
             4 => [
                 'label' => 'Aprovado',
-                'color' => 'successs'
+                'color' => 'successs',
             ],
             5 => [
                 'label' => 'Em disputa',
@@ -35,7 +35,7 @@ class DonatePresenter extends Presenter
             ],
             6 => [
                 'label' => 'Devolvida',
-                'color' => 'danger'
+                'color' => 'danger',
             ],
             7 => [
                 'label' => 'Cancelada',
@@ -79,7 +79,7 @@ class DonatePresenter extends Presenter
             ],
             'charged_back' => [
                 'label' => 'Chargeback',
-                'color' => 'danger'
+                'color' => 'danger',
             ],
         ];
 

@@ -25,7 +25,7 @@ class DonateRequest extends FormRequest
     {
         return [
             'cash_package' => 'required|exists:cash_packages,id',
-            'gateway' => 'required|exists:payment_gateways,id'
+            'gateway' => 'required|exists:payment_gateways,id',
         ];
     }
 }

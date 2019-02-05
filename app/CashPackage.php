@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 
 class CashPackage extends Model
 {
@@ -17,7 +17,7 @@ class CashPackage extends Model
     ];
 
     /**
-     * Boot
+     * Boot.
      */
     protected static function boot()
     {

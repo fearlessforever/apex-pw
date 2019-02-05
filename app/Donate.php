@@ -2,9 +2,9 @@
 
 namespace App;
 
+use App\Presenters\DonatePresenter;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
-use App\Presenters\DonatePresenter;
 
 class Donate extends Model
 {
@@ -13,24 +13,24 @@ class Donate extends Model
     protected $presenter = DonatePresenter::class;
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'package_id', 'gateway_id', 'transaction_reference'
+        'package_id', 'gateway_id', 'transaction_reference',
     ];
 
     /**
-    * The attributes that should be cast to native types.
-    *
-    * @var array
-    */
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'data' => 'array',
     ];
 
-     /**
+    /**
      * The relations to eager load on every query.
      *
      * @var array
@@ -78,6 +78,6 @@ class Donate extends Model
      */
     public function wasDelivered()
     {
-        return !is_null($this->delivered_at);
+        return ! is_null($this->delivered_at);
     }
 }
