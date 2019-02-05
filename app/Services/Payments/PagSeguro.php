@@ -5,6 +5,7 @@ namespace App\Services\Payments;
 use Exception;
 use App\Donate;
 use App\Exceptions\InvalidTransaction;
+use App\Exceptions\TransactionException;
 use Facades\App\Services\Payments\Process;
 
 class PagSeguro
