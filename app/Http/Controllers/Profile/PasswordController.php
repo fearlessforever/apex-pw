@@ -28,8 +28,7 @@ class PasswordController extends Controller
     {
         $user = auth()->user();
 
-        // Check the current password
-        if (! hash_equals(hash_password($user->name.$request->current_password), $user->passwd)) {
+        if (! Hash::check($user->name.$request->current_password, $user->passwd)) {
             flash('Your current password seems to be invalid.')->error();
 
             return redirect()->route('profile.settings');
