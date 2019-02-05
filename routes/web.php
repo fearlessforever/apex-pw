@@ -31,3 +31,4 @@ Route::prefix('profile')->group(function ($route) {
         Route::get('history', 'Donate\DonateController@index')->name('donate.history');
     });
 });
+Route::post('/payment_notification', 'Donate\NotificationsController@notification');

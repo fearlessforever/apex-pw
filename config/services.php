@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'pagseguro' => [
+        'email' => env('PAGSEGURO_EMAIL'),
+        'token' => env('PAGSEGURO_TOKEN'),
+    ],
 ];
