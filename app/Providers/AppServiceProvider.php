@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('App\Contracts\Repositories\UserRepository', 'App\Repositories\UserRepository');
     }
 }
