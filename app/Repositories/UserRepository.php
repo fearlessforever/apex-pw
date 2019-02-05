@@ -7,6 +7,7 @@ use App\Contracts\Repositories\UserRepository as UserRepositoryContract;
 
 class UserRepository implements UserRepositoryContract
 {
+
     /**
      * Get authenticated user.
      *
