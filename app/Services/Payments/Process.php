@@ -16,7 +16,7 @@ class Process
     public function approved($order)
     {
         // Verify if the cash was deliveryd
-        if (!$order->wasDelivered()) {
+        if (! $order->wasDelivered()) {
             if ($order->user->addcash($order->user->ID, $order->package->cash)) {
                 // Cash was deliveryd
                 $order->delivered_at = now();

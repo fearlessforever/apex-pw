@@ -17,7 +17,7 @@ class InvalidPaymentGateway extends Exception
         Log::emergency($this->getMessage());
     }
 
-     /**
+    /**
      * Render the exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request

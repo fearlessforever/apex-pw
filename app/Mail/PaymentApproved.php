@@ -2,18 +2,17 @@
 
 namespace App\Mail;
 
+use App\Donate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Donate;
 
 class PaymentApproved extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * Donate data
-     *
+     * Donate data.
      */
     public $order;
 

@@ -2,11 +2,11 @@
 
 namespace App\Services\Payments;
 
+use Exception;
 use App\Donate;
 use Illuminate\Support\Facades\Log;
-use Facades\App\Services\Payments\Process;
-use Exception;
 use App\Exceptions\InvalidTransaction;
+use Facades\App\Services\Payments\Process;
 
 class PagSeguro
 {
@@ -28,7 +28,7 @@ class PagSeguro
     }
 
     /**
-     * Creates the transaction on PagSeguro
+     * Creates the transaction on PagSeguro.
      */
     public function create($order) : string
     {
@@ -40,7 +40,7 @@ class PagSeguro
             (float) $order->package->price
         );
         $payment->setCurrency('BRL');
-        $payment->setReference((string)$order->transaction_reference);
+        $payment->setReference((string) $order->transaction_reference);
         $payment->setSender()->setName(auth()->user()->truename);
         $payment->setSender()->setEmail(auth()->user()->email);
         $payment->setShipping()->setAddressRequired()->withParameters('FALSE');
@@ -49,6 +49,7 @@ class PagSeguro
             $paymentUrl = $payment->register(
                 \PagSeguro\Configuration\Configure::getAccountCredentials()
             );
+
             return $paymentUrl;
         } catch (Exception $e) {
             die($e->getMessage());
@@ -56,7 +57,7 @@ class PagSeguro
     }
 
     /**
-     * Handle PagSeguro's Notification (IPN)
+     * Handle PagSeguro's Notification (IPN).
      *
      * @param Illuminate\Http\Request $data The request data from PagSeguro POST.
      * @return void
@@ -79,7 +80,7 @@ class PagSeguro
             $order->forceFill([
                 'transaction_status' => $data->getStatus(),
                 'transaction_code' => $data->getCode(),
-                'paid_at' => now()
+                'paid_at' => now(),
             ])->save();
 
             if ($order->transaction_status == self::PAYMENT_APPROVED) {
@@ -87,6 +88,7 @@ class PagSeguro
             }
         } catch (Exception $e) {
             Log::error("PagSeguro's IPN Error: $e->getMessage() [$e->getCode()]");
+
             return false;
         }
     }

@@ -17,7 +17,7 @@ class InvalidTransaction extends Exception
         Log::error($this->getMessage());
     }
 
-     /**
+    /**
      * Render the exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request

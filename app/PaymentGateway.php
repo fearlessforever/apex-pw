@@ -8,7 +8,7 @@ use Facades\App\Services\Payments\PaymentFactory;
 class PaymentGateway extends Model
 {
     /**
-     * Boot
+     * Boot.
      */
     protected static function boot()
     {
@@ -52,7 +52,7 @@ class PaymentGateway extends Model
     }
 
     /**
-     *  Handle Payment Gateway's transaction
+     *  Handle Payment Gateway's transaction.
      */
     public function payment()
     {
