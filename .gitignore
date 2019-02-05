@@ -11,3 +11,4 @@ storage/*.key
 # Enviromnet
 /.history
 /.vscode
+/.idea
