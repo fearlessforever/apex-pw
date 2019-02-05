@@ -6,6 +6,7 @@ use Exception;
 use App\Donate;
 use Illuminate\Support\Facades\Log;
 use App\Exceptions\InvalidTransaction;
+use App\Exceptions\PagSeguroException;
 use Facades\App\Services\Payments\Process;
 
 class PagSeguro
@@ -52,7 +53,7 @@ class PagSeguro
 
             return $paymentUrl;
         } catch (Exception $e) {
-            die($e->getMessage());
+            throw new TransactionException("[PaSeguro Create] {$e->getMessage()}", $e->getCode());
         }
     }
 
@@ -87,9 +88,7 @@ class PagSeguro
                 Process::approved($order);
             }
         } catch (Exception $e) {
-            Log::error("PagSeguro's IPN Error: $e->getMessage() [$e->getCode()]");
-
-            return false;
+            throw new TransactionException("[PaSeguro IPN] {$e->getMessage()}", $e->getCode());
         }
     }
 }
