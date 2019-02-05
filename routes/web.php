@@ -31,7 +31,7 @@ Route::prefix('profile')->group(function ($route) {
         Route::get('history', 'Donate\DonateController@index')->name('donate.history');
     });
     Route::prefix('support')->group(function () {
-       Route::get('/', 'Support\SupportController@index')->name('support.index');
+        Route::get('/', 'Support\SupportController@index')->name('support.index');
     });
 });
 Route::post('/payment_notification', 'Donate\NotificationsController@notification');
