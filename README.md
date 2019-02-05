@@ -19,6 +19,7 @@ We are using [Laravel](https://laravel.com/) 5.6 for the back-end and in front-e
 
 It's a goal add many features as possible. If you want a specific feature, you can request by opening an issue.
 
+#### User
 - Authentication
 - User Profile
 - Ticket System (__To-Do List__)
@@ -27,6 +28,11 @@ It's a goal add many features as possible. If you want a specific feature, you c
     * Supported payment gateways:
         * **Brazil:** PagSeguro, PayPal and Mercado Pago
         * **International:** PayPal
+#### Admin 
+- Authentication
+- Dashboard (including widgets & statistics charts)
+- Role-Based Permissions
+
 
 ## Support
 
