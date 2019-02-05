@@ -7,33 +7,23 @@
 
 # User & Admin Panel for Perfect World
 
-Beautifully developed and maintained by an admin to **help you**. Forget cumbersome panels. You'll get every basic stuff to start your newest PWPS.
+Developed and maintained by Perfect World admins to **help you**. 
 
 ## Getting started
 
-### Prerequisites
+### :clipboard: About
 
-- PHP >= 7.1.3
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
+We are using [Laravel](https://laravel.com/) 5.6 for the back-end and in front-end we are going to use vanilla JavaScript and [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind/).
 
-### Features
+### :sparkles: Features
 
 It's a goal add many features as possible. If you want a specific feature, you can request by opening an issue.
 
 - Authentication
-    * Login
-    * Registration
-- Profile
-    * Update profile data
-    * Change password
+- User Profile
+- Ticket System (__To-Do List__)
 - Donate (__under development__)
-    * Cash Package 
+    * Cash Packages
     * Supported payment gateways:
         * **Brazil:** PagSeguro, PayPal and Mercado Pago
         * **International:** PayPal
