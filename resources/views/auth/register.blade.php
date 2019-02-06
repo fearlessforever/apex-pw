@@ -6,25 +6,13 @@
 <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
     @csrf
     <div class="mb-8">
-        <label for="name" class="block mb-3 text-90">{{ __('Name') }}</label>
+        <label for="name" class="block mb-3 text-90">{{ __('Login') }}</label>
         <input id="name" type="text" class="bg-grey-lighter h-12 appearance-none border-2 border-grey-ligther
             rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-black {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
         @if ($errors->has('name'))
             <p class="text-red text-xs italic pt-2" role="alert">
                 <strong>{{ $errors->first('name') }}</strong>
-            </p>
-        @endif
-    </div>
-
-    <div class="mb-8">
-        <label for="email" class="block mb-3 text-90">{{ __('E-Mail Address') }}</label>
-        <input id="email" type="email" class="bg-grey-lighter h-12 appearance-none border-2 border-grey-ligther
-            rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-black {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-        @if ($errors->has('email'))
-            <p class="text-red text-xs italic pt-2" role="alert">
-                <strong>{{ $errors->first('email') }}</strong>
             </p>
         @endif
     </div>
@@ -40,6 +28,30 @@
             </p>
         @endif
     </div>
+
+    <div class="mb-8">
+        <label for="truename" class="block mb-3 text-90">{{ __('Nome Completo') }}</label>
+        <input id="name" type="text" class="bg-grey-lighter h-12 appearance-none border-2 border-grey-ligther
+            rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-black {{ $errors->has('truename') ? ' is-invalid' : '' }}" name="truename" value="{{ old('truename') }}" required autofocus>
+
+        @if ($errors->has('truename'))
+            <p class="text-red text-xs italic pt-2" role="alert">
+                <strong>{{ $errors->first('truename') }}</strong>
+            </p>
+        @endif
+    </div>
+
+    <div class="mb-8">
+        <label for="email" class="block mb-3 text-90">{{ __('E-Mail Address') }}</label>
+        <input id="email" type="email" class="bg-grey-lighter h-12 appearance-none border-2 border-grey-ligther
+            rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-black {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+        @if ($errors->has('email'))
+            <p class="text-red text-xs italic pt-2" role="alert">
+                <strong>{{ $errors->first('email') }}</strong>
+            </p>
+        @endif
+    </div>    
 
     <div class="mb-6">
             {!! NoCaptcha::display() !!}

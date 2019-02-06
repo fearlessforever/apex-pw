@@ -44,6 +44,6 @@
             </div>
         </section>
     </div>
-    <!-- {!! NoCaptcha::renderJs() !!} -->
+    {!! NoCaptcha::renderJs() !!}
 </body>
 </html>
