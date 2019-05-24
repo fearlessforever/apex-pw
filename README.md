@@ -5,35 +5,28 @@
 [![GitHub stars](https://img.shields.io/github/stars/webmasterdro/pw-web.svg?style=popout-square)](https://github.com/webmasterdro/pw-web/stargazers)
 [![GitHub license](https://img.shields.io/github/license/webmasterdro/pw-web.svg?style=popout-square)](https://github.com/webmasterdro/pw-web/blob/master/LICENSE)
 
-# User & Admin Panel for Perfect World
+# Painel de Usuários & Administrativo para Perfect World
 
-Developed and maintained by Perfect World admins to **help you**. 
+Desenvolvido e mantido por administradores para te ajudar. Robusto, seguro e completo em recursos.
 
-## Getting started
+## Começando
 
-### :clipboard: About
+### :clipboard: Sobre
 
-We are using [Laravel](https://laravel.com/) 5.6 for the back-end and in front-end we are going to use vanilla JavaScript and [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind/).
+Desenvolvido em [Laravel](https://laravel.com/) (back-end). No front-end, temos JavaScript puro e Vue para deixar ainda melhor; já ara deixar bonito, vamos usar [Tailwind CSS](https://tailwindcss.com/docs/what-is-tailwind/).
 
-### :sparkles: Features
+### :sparkles: Recursos
 
-It's a goal add many features as possible. If you want a specific feature, you can request by opening an issue.
+Objetivo é trazer quantos recursos forem possíveis.
 
-#### User
-- Authentication
-- User Profile
-- Ticket System (__To-Do List__)
-- Donate (__under development__)
-    * Cash Packages
-    * Supported payment gateways:
-        * **Brazil:** PagSeguro, PayPal and Mercado Pago
-        * **International:** PayPal
-#### Admin 
-- Authentication
-- Dashboard (including widgets & statistics charts)
-- Role-Based Permissions
+#### Usuário
+- Autenticação;
+- Perfil;
+- Sistema de Suporte via Ticket (na lista :construction:);
+- Doações (em desenvolvimento :construction:);
+    * Créditos avulsos e pacotes;
+    * Gateways suportados:
+        * PagSeguro, PagHiper, PayPal e Mercado Pago
 
-
-## Support
-
-<a href="https://www.buymeacoffee.com/itmxe7h" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+#### Adminstradores
+- Em breve
