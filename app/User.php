@@ -71,6 +71,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Get user by the given login.
+     *
+     */
+    public static function findByLogin(string $login)
+    {
+        return self::whereName($login)->first();
+    }
+
+    /**
      * Add cubi gold to the given user.
      *
      * @param int $user User ID

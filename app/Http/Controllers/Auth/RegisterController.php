@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use DB;
-use App\User;
+use App\Traits\PerfectWorld;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -23,34 +24,8 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, PerfectWorld;
 
-    /**
-     * Perfect World's users columns.
-     *
-     * @var string
-     */
-    protected $columns = [
-        'ID' => 'int',
-        'name' => 'string',
-        'passwd' => 'string',
-        'Prompt' => 'string',
-        'answer' => 'string',
-        'truename' => 'string',
-        'idnumber' => 'string',
-        'email' => 'string',
-        'mobilenumber' => 'string',
-        'province' => 'string',
-        'city' => 'string',
-        'phonenumber' => 'string',
-        'address' => 'string',
-        'postalcode' => 'string',
-        'gender' => 'int',
-        'birthday' => 'date',
-        'creatime' => 'date',
-        'qq' => 'string',
-        'passwd2' => 'string',
-    ];
 
     /**
      * Where to redirect users after registration.
@@ -82,7 +57,19 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath());
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        Auth::login($user);
     }
 
     /**
@@ -100,65 +87,5 @@ class RegisterController extends Controller
             'email' => 'required|email|max:64|unique:users',
             // 'g-recaptcha-response' => 'required|captcha',
         ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        $collection = collect($data)->except(['_token'])->toArray();
-        $data = $this->sortAndCleanData($collection);
-
-        // Unset 'ID' and 'creatime' (both are set by 'adduser' procedure)
-        unset($data['ID'], $data['creatime']);
-
-        // Set passwd's hash
-        $data['passwd'] = Hash::make($data['name'].$data['passwd']);
-
-        return DB::statement('CALL adduser (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
-    }
-
-    /**
-     * Sorts the data according to PW's users columns, removes non-existing columns,
-     * and sets not set columns as empty strings.
-     *
-     * @param array $data
-     * @return void
-     */
-    protected function sortAndCleanData(array $data)
-    {
-        $data_temp = $data;
-        $data = [];
-        foreach ($this->columns as $column => $type) {
-            if (isset($data_temp[$column])) {
-                $data[$column] = $data_temp[$column];
-            } else {
-                $data[$column] = $this->setColumnEmptyValueByType($type);
-            }
-        }
-
-        return $data;
-    }
-
-    /**
-     * Correctly defines the "empty value" based on column type.
-     *
-     * @param $type The column type.
-     * @return void
-     */
-    protected function setColumnEmptyValueByType($type)
-    {
-        switch ($type) {
-            case 'string':
-                return '';
-            case 'int':
-                return 0;
-            case 'date':
-                return;
-        }
     }
 }
