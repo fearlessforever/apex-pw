@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,21 +21,26 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body class="bg-grey-lighter">
     <div id="app">
-        <nav class="flex items-center justify-between flex-wrap bg-white w-full px-6 py-6 shadow border-t-4 border-grey-darkest">
-            <ul class="md:ml-auto flex flex-col md:flex-row items-center list-reset {{ ! auth()->guest() ? 'container mx-auto md:px-0' : '' }} ">
+        <nav
+            class="flex items-center justify-between flex-wrap bg-white w-full px-6 py-6 shadow border-t-4 border-grey-darkest">
+            <ul
+                class="md:ml-auto flex flex-col md:flex-row items-center list-reset {{ ! auth()->guest() ? 'container mx-auto md:px-0' : '' }} ">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="block md:mr-10 mb-3 md:mb-0 text-center">
-                        <a class="block mt-4 lg:inline-block lg:mt-0 text-grey-dark hover:text-white mr-4 no-underline uppercase" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="block md:mr-10 mb-3 md:mb-0 text-center">
-                        <a class="block mt-4 lg:inline-block lg:mt-0 text-grey-dark hover:text-white mr-4 no-underline uppercase" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
+                <li class="block md:mr-10 mb-3 md:mb-0 text-center">
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-grey-dark hover:text-white mr-4 no-underline uppercase"
+                        href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="block md:mr-10 mb-3 md:mb-0 text-center">
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-grey-dark hover:text-white mr-4 no-underline uppercase"
+                        href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
                 @else
-                    @include('partials.menu')               
-                    @include('partials.user')
+                @include('partials.menu')
+                @include('partials.user')
                 @endguest
             </ul>
         </nav>
@@ -46,4 +52,5 @@
     </div>
     {!! NoCaptcha::renderJs() !!}
 </body>
+
 </html>

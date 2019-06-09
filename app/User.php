@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -68,6 +69,16 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->donations();
+    }
+
+    /**
+     * Get all tickets for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany;
+     */
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
     }
 
     /**

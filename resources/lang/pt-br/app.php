@@ -28,4 +28,16 @@ return [
         'cash' => 'GOLD(s)',
         'created_at' => 'Data pedido',
     ],
+    'tickets' => [
+        'title' => 'Meus Tickets',
+        'title_nav' => 'Tickets',
+        'created' => 'Seu ticket foi criado com sucesso.',
+        'new' => 'Novo Ticket',
+        'categories' => 'Setor',
+        'subject' => 'Assunto',
+        'message' => 'Mensagem',
+        'reply' => 'Resposta adicionada com sucesso.',
+        'cant_reply' => 'Seu ticket foi marcado como resolvido e não pode receber mais comentários.',
+        'mark_as_solved' => 'Seu ticket foi marcado como resolvido.'
+    ]
 ];
