@@ -1,0 +1,119 @@
+@tailwind components;
+@tailwind preflight;
+
+body {
+  background-color: #F0F4F8;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Icon
+---------------------------------------------------------------------------- */
+.primary {
+  fill: #A5B3BB; }
+
+.secondary {
+  fill: #0D2B3E; }
+
+/* Tailwind Utilities
+---------------------------------------------------------------------------- */
+@tailwind utilities;
+
+/* Alert
+---------------------------------------------------------------------------- */
+.alert {
+  @apply border-t border-t-2 border-b border-b-2 relative mb-6 w-full;
+
+  &.success {
+    @apply bg-green-lightest border-green-light text-green-dark;
+  }
+
+  &.danger {
+    @apply bg-red-lightest border-red-light text-red-dark;
+  }
+
+  &.warning {
+    @apply bg-yellow-lightest border-yellow-light text-yellow-dark;
+  }
+
+  &.info {
+    @apply bg-blue-lightest border-blue-light text-blue-dark;
+  }
+}
+
+/* Card
+---------------------------------------------------------------------------- */
+.card {
+  @apply rounded-lg shadow bg-white mb-6
+}
+
+.card-header {
+  @apply flex items-center rounded-tl-lg rounded-tr-lg p-8
+}
+
+.card-header h2 {
+  @apply text-grey-darkest uppercase text-base
+}
+
+.card-body {
+  @apply border-grey-lighter border-t-2
+}
+
+.card-footer {
+  @apply text-right border-grey-lighter border-t-2 rounded-bl-lg rounded-br-lg p-8
+}
+
+.is-active {
+  @apply text-blue rounded
+}
+
+/* Badge
+---------------------------------------------------------------------------- */
+
+.badge {
+  @apply text-sm py-1 px-4 font-bold inline rounded;
+
+  &.badge-warning {
+    @apply text-yellow-darker bg-yellow-lightest;
+  }
+
+  &.badge-success {
+    @apply text-green-dark bg-green-lightest;
+  }
+
+  &.badge-info {
+    @apply text-blue-darkest bg-blue-lighter;
+  }
+
+  &.badge-danger {
+    @apply text-red-darkest bg-red-lightest;
+  }
+}
+
+/* Table
+---------------------------------------------------------------------------- */
+
+.table {
+
+  thead {
+
+    tr {
+
+      th {
+        background-color: #F0F4F8;
+        @apply text-xs uppercase py-3 border-b-2 border-grey-light;
+      }
+
+    }
+
+  }
+
+}
+
+.ticket-details {
+  dt {
+    @apply inline-block text-sm font-bold mx-auto w-1/2;
+  }
+  dd {
+    @apply inline-block text-sm mx-auto pb-3;
+  }
+}

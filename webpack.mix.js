@@ -12,15 +12,22 @@ let tailwindcss = require('tailwindcss')
  |
  */
 
-mix.postCss('resources/assets/css/app.css', 'public/css', [tailwindcss('tailwind.js')])
+mix.sass('resources/assets/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [tailwindcss('tailwind.js')]
+    })
+
+/* mix.postCss('resources/assets/css/app.css', 'public/css', [tailwindcss('tailwind.js')])
    .webpackConfig({
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'resources/assets/js/'),
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, 'resources/assets/js/'),
+            },
         },
-    },
-});
+    });
+ */
 
 if (mix.inProduction()) {
-   mix.version()
+    mix.version()
 }

@@ -1,3 +1,31 @@
+.container {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 576px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -623,36 +651,20 @@ table {
   border-collapse: collapse;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 576px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 992px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
-  }
-}
-
 body {
+  background-color: #f0f4f8;
   font-family: 'Lato', sans-serif;
+}
+
+/* Icon
+---------------------------------------------------------------------------- */
+
+.primary {
+  fill: #a5b3bb;
+}
+
+.secondary {
+  fill: #0d2b3e;
 }
 
 /* Tailwind Utilities
@@ -6342,37 +6354,34 @@ body {
 ---------------------------------------------------------------------------- */
 
 .alert {
-  border-width: 1px;
-  border-radius: .25rem;
+  border-top-width: 1px;
+  border-top-width: 2px;
+  border-bottom-width: 1px;
+  border-bottom-width: 2px;
   position: relative;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
   margin-bottom: 1.5rem;
-  text-align: center;
-  width: 33.33333%;
+  width: 100%;
 }
 
-.alert.alert-success {
+.alert.success {
   background-color: #e3fcec;
   border-color: #51d88a;
   color: #1f9d55;
 }
 
-.alert.alert-danger {
+.alert.danger {
   background-color: #fcebea;
   border-color: #ef5753;
   color: #cc1f1a;
 }
 
-.alert.alert-warning {
+.alert.warning {
   background-color: #fcfbeb;
   border-color: #fff382;
   color: #f2d024;
 }
 
-.alert.alert-info {
+.alert.info {
   background-color: #eff8ff;
   border-color: #6cb2eb;
   color: #2779bd;
@@ -6382,10 +6391,10 @@ body {
 ---------------------------------------------------------------------------- */
 
 .card {
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
-  background-color: #fff;
   border-radius: .5rem;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  background-color: #fff;
   margin-bottom: 1.5rem;
 }
 
@@ -6396,7 +6405,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #f8fafc;
   border-top-left-radius: .5rem;
   border-top-right-radius: .5rem;
   padding: 2rem;
@@ -6409,7 +6417,6 @@ body {
 }
 
 .card-body {
-  padding: 2rem;
   border-color: #f1f5f8;
   border-top-width: 2px;
 }
@@ -6424,7 +6431,72 @@ body {
 }
 
 .is-active {
-  color: #3490dc !important;
+  color: #3490dc;
+  border-radius: .25rem;
+}
+
+/* Badge
+---------------------------------------------------------------------------- */
+
+.badge {
+  font-size: .875rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: 700;
+  display: inline;
+  border-radius: .25rem;
+}
+
+.badge.badge-warning {
+  color: #684f1d;
+  background-color: #fcfbeb;
+}
+
+.badge.badge-success {
+  color: #1f9d55;
+  background-color: #e3fcec;
+}
+
+.badge.badge-info {
+  color: #12283a;
+  background-color: #bcdefa;
+}
+
+.badge.badge-danger {
+  color: #3b0d0c;
+  background-color: #fcebea;
+}
+
+/* Table
+---------------------------------------------------------------------------- */
+
+.table thead tr th {
+  background-color: #f0f4f8;
+  font-size: .75rem;
+  text-transform: uppercase;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  border-bottom-width: 2px;
+  border-color: #dae1e7;
+}
+
+.ticket-details dt {
+  display: inline-block;
+  font-size: .875rem;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.ticket-details dd {
+  display: inline-block;
+  font-size: .875rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: .75rem;
 }
 
 @media (min-width: 576px) {
